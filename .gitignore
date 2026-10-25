@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+data-figshare.csv
+analysis/results/
+*.log
+.DS_Store
