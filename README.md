@@ -22,7 +22,7 @@ python run_core.py --plan
 python run_core.py
 ```
 
-The core runner explicitly sets `BASE_LEARNER=RF` for the nested stack, matching the reported principal random-forest comparison. Do not leave the stack at its auto-selection default when reproducing that comparison. Output goes to `analysis/results/`. Training is substantial; the runner fits models and is not a quick demonstration.
+The core runner explicitly sets `BASE_LEARNER=RF` for the nested stack and `SENT_LEARNER=RF` for the context experiment, matching the reported principal random-forest comparisons. Do not leave the stack at its auto-selection default when reproducing that comparison. Output goes to `analysis/results/`. Training is substantial; the runner fits models and is not a quick demonstration.
 
 ## Analyses and dependencies
 
@@ -45,6 +45,8 @@ The core runner explicitly sets `BASE_LEARNER=RF` for the nested stack, matching
 | 19 | Priority-metal completion and uncertainty; run after 17 |
 
 Each program runs as `python analysis/scripts/<program>.py`. Program numbers identify code files, not manuscript figures. The exploratory random-split templates and document/layout tooling are excluded.
+
+Program 14 requires a mode: `python analysis/scripts/14_robustness.py rep20`, then the `sent` and `tune` modes for the other two analyses. To reproduce RF context analyses when invoking programs separately, set the environment variable `SENT_LEARNER=RF`; for program 13 additionally set `BASE_LEARNER=RF`. Keep the original LightGBM comparison in a separate result directory by setting `HM_RES` when running that variant.
 
 ## Interpretation and verification
 
